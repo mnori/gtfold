@@ -121,6 +121,16 @@ static void print_usage() {
 	printf("   --useSHAPE FILE      Use SHAPE constraints from FILE.\n");
 	printf("   -v, --verbose	Run in verbose mode (includes partition function table printing.)\n");
 	printf("   -w, --workdir DIR    Path of directory where output files will be written.\n");
+    
+    printf("\nSHAPE syntax:\n");
+    printf("\tSHAPE values should be given in a file with two space-delimited columns, for example\n");
+    printf("\t\t1 0.1\n");
+    printf("\t\t2 0.001 \n");
+    printf("\t\t3 1.67 \n");
+    printf("\t\tetc.,\n");
+    printf("\twhere the first column is the nucleotide position (INT) and the second column is the SHAPE reactivity[1] (DOUBLE) for that position. The file \n");
+    printf("\tshould have no header. Not all positions need to be included in the file, and the values do not need to be in order of increasing position. Negative\n");
+    printf("\tSHAPE reactivities are ignored. \n");
 }
 
 static void print_usage_developer_options() {
