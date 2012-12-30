@@ -177,9 +177,17 @@ void parse_options(int argc, char** argv) {
 }
 
 static void print_usage_developer_options() {
-	printf("\n\nDeveloper OPTIONS\n");
-	printf("   --unique [0|1]		   Set/Reset the UNIQUE_MULTILOOP_DECOMPOSITION routine which tries to ensure unique structures. By default this option will be switched on for seq len less than 2000 and switched off for more seq len.\n");
-    	printf("   --duplicatecheck [0|1]	   Set/Reset the check if duplicate structure is coming or not, if duplicate is coming then warn the user and exits. By default this option will switched off. This option will slowdown program as well as consume more memory because of need to storing all structures. Default behavior will be OFF if unique option is switched ON and it will be ON by default if unique option is OFF.\n");
+    printf("\n\nDeveloper OPTIONS\n");
+    printf("   --unique [0|1]       Set/Reset the UNIQUE_MULTILOOP_DECOMPOSITION routine which ensures\n");
+    printf("                        no duplicate structures are explored.\n");
+    printf("                        By default this option will be switched on for sequences less than\n");
+    printf("                        2000 nt in length and switched off for longer sequences.\n");
+    printf("   --duplicatecheck [0|1]   Set/Reset the check if duplicate structure is encountered.\n");
+    printf("                        This check requires that all structures explored be stored;\n");
+    printf("                        this consumes more memory and increases running time,\n");
+    printf("                        but is required if --unique [0] option is used.\n");
+    printf("                        Default behavior will be OFF if unique option is switched ON and\n");
+    printf("                        ON if unique option is OFF.\n");
     printf("\nSetting default parameter directory:\n");
     printf("\tTo run properly, GTfold requires access to a set of parameter files. If you are using one of the prepackaged binaries, you may need (or chose) to \n");
     printf("\tset the GTFOLDDATADIR environment variable to specify the directory in whihc GTfold should look to find default parameter files. In a terminal \n");
@@ -202,18 +210,19 @@ static void print_usage() {
     printf("   FILE is an RNA sequence file containing only the sequence or in FASTA format.\n\n");
 
     printf("OPTIONS\n");
-    printf("   --delta DOUBLE         Calculate suboptimal structures within DOUBLE kcal/mol\n");
+    printf("   --delta DOUBLE       Calculate suboptimal structures within DOUBLE kcal/mol\n");
     printf("                        of the MFE. (Uses -d 2 treatment of dangling energies.)\n");
     printf("\n"); 
     printf("   -d, --dangle INT     Restricts treatment of dangling energies (INT=2),\n");
     printf("   -o, --output NAME    Write output files with prefix given in NAME\n");
     printf("   -p  --paramdir DIR   Path to directory from which parameters are to be read\n");
     printf("   -h, --help           Output help (this message) and exit.\n");
-    printf("   --detailedhelp      Output help (this message) with detailed options and examples, and exit.\n");
     printf("   -w, --workdir DIR    Path of directory where output files will be written.\n");
     printf("   -v, --verbose        Run in verbose mode.\n");
-    printf("   --maxcount INT	    Optional option '--maxcount max_structure_count' to restrict program to generate only that many structure and quits after that. By default there is no maximum limit\n");
-	printf("   --detailedhelp       Display detailed help message. Includes examples and additional options useful to developers.\n");
+    printf("   --maxcount INT	    Generate only INT suboptimal structures within the requested range and exits.\n");
+    printf("                        By default there is no limit on the number of structures returned.\n");
+    printf("   --detailedhelp       Display detailed help message and exit.\n");
+    printf("                        Includes examples and additional options useful to developers.\n");
 }
 
 static void print_examples(){
@@ -224,7 +233,7 @@ static void print_examples(){
 }
 
 static void print_examples_developer_options(){
-        printf("\n\nDeveloper Options EXAMPLES:\n\n");
+        printf("\n\nDeveloper Options EXAMPLE:\n\n");
 	printf("1. Calculate Suboptimal Structures:\n");
         printf("gtsubopt --delta DOUBLE [-d 2] [-o outputPrefix] [--unique INT] [--duplicatecheck INT] [--maxcount INT] [-v] [-w DIR] [-p DIR] <seq_file>\n\n");
         printf("\n\n");
