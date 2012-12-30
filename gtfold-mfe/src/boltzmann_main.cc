@@ -130,13 +130,14 @@ static void print_usage_developer_options() {
 	printf("   --exactintloop       Includes structures with abitrarily many unpaired nucleotides in internal loops.\n");
 	printf("                        Note: using this option increases the running time by a factor of N,\n");
 	printf("                        where N is the sequence length.\n");
-	printf("   --checkfraction	While sampling structures, enable check for each structure, the probability used in stochastic\n");
-	printf("   -dS                  Calculate the partition function using sfold reccurences and use them in traceback.\n");
+	printf("   --checkfraction	While sampling structures, enable check that for each structure, the probability used \n"); 
 	printf("			sampling matches the probability of that structure according to the Boltzmann Distribution.\n");
+	printf("   -dS                  Calculate the partition function using sfold reccurences and use them in traceback.\n"); 
+	printf("                        WARNING: this option does not pass --checkfraction test.\n");
 	printf("   --sampleenergy DOUBLE      Writes only sampled structures with free energy equal to DOUBLE to file prefix.sample. \n"); 
 	printf("                        Only valid in combination with --sample. Number of threads must be limited to one (-t 1).\n");
-	printf("   --scale DOUBLE	Use scaling facotr as DOUBLE to approximate partition function, \n"); 
-	printf("                        default value will be 1.07 in case seq len is more than 100 else it will be zero by default.\n");
+	printf("   --scale DOUBLE	Use scaling facotr DOUBLE to approximate partition function, \n"); 
+	printf("                        default value is 1.07 for sequences with more than 100 nt and zero for shorter sequences.\n");
 	printf("   --parallelsample     Paralellizes the sampling of each individual structure.\n");
 	printf("			Only valid in combination with --sample.\n");
 	printf("   --separatectfiles [--ctfilesdir DIR] [--summaryfile NAME] Writes each sampled structure to a separate .ct file \n");
