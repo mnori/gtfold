@@ -144,11 +144,11 @@ static void print_usage_developer_options() {
 	printf("			in the DIR directory. Also writes a summary of the sampled structures to NAME in DIR.\n");
 	printf("                        Default directory is the working directory specified with -w, and the default summary file\n");
 	printf("                        name is stochaSampleSumary.txt Only valid in combination with --sample. \n");
-	printf("   --advancedouble INT	Directs Partition Function and Sampling calculation to use advanced double with specifier INT,\n");
-	printf("			1 means native double, 2 means BigNum, 3 means hybrid, 4 means BigNumOptimized.\n");
-	printf("			If this option not used then program will decide intelligently for best one.\n");
-	printf("   --bignumprecision INT	Precision to be used in case bignum(or hybrid) is used (default value is 512).\n");
-	printf("			Min value required is 64 and ignored in case of --advancedouble option value is 1.\n");
+	printf("   --advancedouble INT	Directs Partition Function and Sampling calculation to use\n");
+	printf("			INT=1 native double, INT=2 BigNum, INT=3 hybrid, or INT=4 BigNumOptimized.\n");
+	printf("			If this option not used then program will use the best setting depending on sequence length.\n");
+	printf("   --bignumprecision INT	Precision used in case BigNum, hybrid, and BigNumOptimized. Default value is 512.\n");
+	printf("			Minimum value is 64, and precision is ignored if using --advancedouble 1.\n");
 	printf("\nSetting default parameter directory:\n");
 	printf("\tTo run properly, GTfold requires access to a set of parameter files. If you are using one of the prepackaged binaries, you may need (or chose) to \n");
 	printf("\tset the GTFOLDDATADIR environment variable to specify the directory in whihc GTfold should look to find default parameter files. In a terminal \n");
