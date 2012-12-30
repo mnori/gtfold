@@ -468,8 +468,9 @@ static void print_usage() {
     printf("                        Load constraints from FILE.  See Constraint syntax below.\n");
     printf("   -d, --dangle INT     Restricts treatment of dangling energies (INT=0,1,2), (with -d option, call to -m option will be ignored)\n"); 
     printf("                        see below for details.\n");
+    printf("   --detailedhelp      Output help (this message) with detailed options and examples, and exit.\n");      
+    printf("   -e, --energydetail         prints energy decomposition for MFE structure to file output-prefix.energy.\n");
     printf("   -h, --help           Output help (this message) and exit.\n");
-    printf("   --detailedhelp      Output help (this message) with detailed options and examples, and exit.\n");
     printf("   -l, --limitCD INT    Set a maximum base pair contact distance to INT. If no\n");
     printf("                        limit is given, base pairs can be over any distance.\n");
     printf("   -m  --mismatch       Enable terminal mismatch calculations\n");
@@ -486,9 +487,7 @@ static void print_usage() {
     printf("   --rnafold            Run as RNAfold default mode (ViennaPackage version 1.8.5).\n");
     printf("   --unafold            Run as UNAfold default mode (version 3.8), subject to traceback\n");
     printf("                        implementation.\n");
-
-    printf("   --useSHAPE FILE  Use SHAPE constraints from FILE.\n");      
-    printf("   -e, --energydetail         prints energy decomposition for MFE structure to file output-prefix.energy.\n");
+    printf("   --useSHAPE FILE  Use SHAPE constraints from FILE.\n");
     printf("\nConstraint syntax:\n");
     printf("\tP i j k  # prohibit (i,j)(i+1,j-1),.......,(i+k-1,j-k+1) pairs.\n");
     printf("\tF i j k  # force (i,j)(i+1,j-1),.......,(i+k-1,j-k+1) pairs.\n");
