@@ -573,8 +573,10 @@ int boltzmann_main(int argc, char** argv) {
 
 	readThermodynamicParameters(paramDir.c_str(), PARAM_DIR, 0, 0, 0);
 
+	// Debug 9/30/13
+	// If length < 1000: do not use scaling
 	if(scaleFactor==-1){//that is if scaleFactor is not input by the user, and we only need to decide for its default value
-		if(strlen(seq.c_str())<=100){
+		if(strlen(seq.c_str())< 1000){
 			scaleFactor=0.0;
 		}
 		else{
@@ -634,14 +636,33 @@ int boltzmann_main(int argc, char** argv) {
 }
 
 static void decideAutomaticallyForAdvancedDoubleSpecifier(){
+	// Debug 9/30/13:
+	// if length < 1000 use native double
+	// else if length >= 1000 but scaling is default 1.07 use native double
+	// else use BigNum computation
+	//
+	if(seq.length() < 1000)
+	{
+		PF_ST_D2_ADVANCED_DOUBLE_SPECIFIER = 1;
+	}
+	else if (seq.length() >= 1000 && scaleFactor >= 1.07)
+	{
+		PF_ST_D2_ADVANCED_DOUBLE_SPECIFIER = 1;
+	}
+	else
+	{
+		PF_ST_D2_ADVANCED_DOUBLE_SPECIFIER = 4;
+	}
+	
 	//if( seq.length()<1000 || (seq.length()>1000 && scaleFactor>=1.0) || (seq.length()>3000 && scaleFactor>=1.25)){
-	if( seq.length()<=1000 || scaleFactor>=1.07 ){
+	/*if( seq.length()<=1000 || scaleFactor>=1.07 ){
 		PF_ST_D2_ADVANCED_DOUBLE_SPECIFIER=1;
 	}
 	else {
 		PF_ST_D2_ADVANCED_DOUBLE_SPECIFIER=4;
 	}
 	//else PF_ST_D2_ADVANCED_DOUBLE_SPECIFIER=1;
+	*/
 }
 
 static void handleD2PartitionFunction(){
