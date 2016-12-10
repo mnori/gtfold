@@ -486,17 +486,13 @@ static void parse_options(int argc, char** argv) {
   			} else if (strcmp(argv[i], "--shapeM") == 0) {
 		        if (i < argc) {
 					shapeM = atof(argv[++i]);
-					printf("Set shapeM to %f", shapeM);
 		        } else {
-					printf("WHOOPS");
 					help();
 		        }
 	      	} else if (strcmp(argv[i], "--shapeB") == 0) {
 		        if (i < argc) {
 					shapeB = atof(argv[++i]);
-					printf("Set shapeB to %f", shapeB);
 		        } else {
-					printf("WHOOPS");
 					help();
 		        }
 		    } else {
