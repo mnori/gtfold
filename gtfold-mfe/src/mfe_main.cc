@@ -74,10 +74,6 @@ static int print_energy_decompose = 0;
 static int nThreads = -1;
 static int contactDistance = -1;
 
-// Parameters for the SHAPE pseudo free energy calculation
-static double shapeM = 2.6;
-static double shapeB = -0.8;
-
 static void help();
 static void detailed_help();
 static void printRunConfiguration(string seq);
@@ -353,7 +349,20 @@ void parse_mfe_options(int argc, char** argv) {
         }
         else
           help();
-      }				
+      } else if (strcmp(argv[i], "--shapeM") == 0) {
+        if (i < argc) {
+          shapeM = atof(argv[++i]);
+        } else {
+          help();
+        }
+      } else if (strcmp(argv[i], "--shapeB") == 0) {
+        if (i < argc) {
+          shapeB = atof(argv[++i]);
+        } else {
+          help();
+        }
+      } 
+
     } else {
       seqfile = argv[i];
     }
@@ -492,6 +501,10 @@ static void print_usage() {
     printf("   --unafold            Run as UNAfold default mode (version 3.8), subject to traceback\n");
     printf("                        implementation.\n");
     printf("   --useSHAPE FILE  Use SHAPE constraints from FILE.\n");
+    printf("   --shapeM FLOAT   Slope (m) parameter for the pseudo free energy equation.\n");
+    printf("   --shapeB FLOAT   Intercept (b) parameter for the pseudo free energy equation.\n");
+    printf("                    Default m and b values are 2.6 and -0.8 respectively .\n");
+
     printf("\nConstraint syntax:\n");
     printf("\tP i j k  # prohibit (i,j)(i+1,j-1),.......,(i+k-1,j-k+1) pairs.\n");
     printf("\tF i j k  # force (i,j)(i+1,j-1),.......,(i+k-1,j-k+1) pairs.\n");

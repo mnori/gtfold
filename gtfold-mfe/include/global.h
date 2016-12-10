@@ -23,6 +23,11 @@ extern int g_prefilter2;
 extern unsigned int chPairKey;
 
 extern int SHAPE_ENABLED;//0 means false and 1 means true
+
+// Set default parameters for the SHAPE pseudo free energy calculation
+extern double shapeM;
+extern double shapeB;
+
 extern int g_LIMIT_DISTANCE;
 extern int g_contactDistance;
 

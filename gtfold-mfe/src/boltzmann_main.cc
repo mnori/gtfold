@@ -119,6 +119,9 @@ static void print_usage() {
 	printf("                        Writes structures to file output-prefix.samples.\n");
 	printf("   -t|--threads INT	Limit number of threads used to INT.\n");
 	printf("   --useSHAPE FILE      Use SHAPE constraints from FILE.\n");
+	printf("   --shapeM FLOAT   Slope (m) parameter for the pseudo free energy equation.\n");
+    printf("   --shapeB FLOAT   Intercept (b) parameter for the pseudo free energy equation.\n");
+    printf("                    Default m and b values are 2.6 and -0.8 respectively .\n");
 	printf("   -v, --verbose	Run in verbose mode (includes partition function table printing.)\n");
 	printf("   -w, --workdir DIR    Path of directory where output files will be written.\n");
     
@@ -473,15 +476,30 @@ static void parse_options(int argc, char** argv) {
 				else
 					help();
 			} else if (strcmp(argv[i], "--useSHAPE") == 0){
-        			if( i+1 < argc){
-          				shapeFile = argv[++i];
-          				//SHAPE_ENABLED = true;
-          				SHAPE_ENABLED = 1;
-        			}
-        			else
-          				help();
-      			}
-			else{
+    			if( i+1 < argc){
+      				shapeFile = argv[++i];
+      				//SHAPE_ENABLED = true;
+      				SHAPE_ENABLED = 1;
+    			}
+    			else
+  					help();
+  			} else if (strcmp(argv[i], "--shapeM") == 0) {
+		        if (i < argc) {
+					shapeM = atof(argv[++i]);
+					printf("Set shapeM to %f", shapeM);
+		        } else {
+					printf("WHOOPS");
+					help();
+		        }
+	      	} else if (strcmp(argv[i], "--shapeB") == 0) {
+		        if (i < argc) {
+					shapeB = atof(argv[++i]);
+					printf("Set shapeB to %f", shapeB);
+		        } else {
+					printf("WHOOPS");
+					help();
+		        }
+		    } else {
 				printf("Error: Option %s is Undefined option\n", argv[i]);
 				help();
 			}

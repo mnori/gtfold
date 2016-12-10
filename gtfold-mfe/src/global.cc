@@ -20,6 +20,11 @@ int g_prefilter1;
 int g_prefilter2;
 
 int SHAPE_ENABLED = 0;
+
+// set default pseudo free energy parameters
+double shapeM = 2.6;
+double shapeB = -0.8;
+
 int g_LIMIT_DISTANCE;
 int g_contactDistance;
 int g_bignumprecision = 512;
