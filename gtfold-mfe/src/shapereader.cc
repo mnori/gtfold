@@ -86,16 +86,14 @@ int calcShapeEnergy(double shapeNumber, double shapeM, double shapeB){
 		return 0;
 	}
 	else{
-		double energy = shapeModel(shapeNumber);
+		double energy = shapeModel(shapeNumber, shapeM, shapeB);
 		return (int)floor(100.0*energy+ .5);
 	}
 }
 
 
-double shapeModel(double SHAPE_value){
+double shapeModel(double SHAPE_value, double m, double b){
 //ZS: This function calculates the free energy contribution due to SHAPE. 
-	double m = 2.6;
-	double b = -0.8;
 	return m*log(SHAPE_value+1)+b;
 }
 

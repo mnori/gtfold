@@ -8,7 +8,7 @@ void readSHAPEarray(const char* filename, int seqlength, double shapeM, double s
 void free_shapeArray(int len);
 void print_shapeArray(int len);
 int calcShapeEnergy(double shapeNumber, double shapeM, double shapeB);
-double shapeModel(double SHAPE_value);
+double shapeModel(double SHAPE_value, double m, double b);
 
 #ifdef __cplusplus
 extern "C"{

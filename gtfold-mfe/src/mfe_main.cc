@@ -74,6 +74,10 @@ static int print_energy_decompose = 0;
 static int nThreads = -1;
 static int contactDistance = -1;
 
+// Parameters for the SHAPE pseudo free energy calculation
+static double shapeM = 2.6;
+static double shapeB = -0.8;
+
 static void help();
 static void detailed_help();
 static void printRunConfiguration(string seq);
@@ -97,7 +101,7 @@ void init_fold(const char* seq) {
   }
 
   if (SHAPE_ENABLED) {
-    readSHAPEarray(shapeFile.c_str(),len);
+    readSHAPEarray(shapeFile.c_str(), len, shapeM, shapeB);
   }
 
   if (UNAMODE) {
