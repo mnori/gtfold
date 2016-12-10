@@ -40,7 +40,7 @@ void print_shapeArray(int len){
 
 }
 
-void readSHAPEarray(const char* filename, int seqlength){
+void readSHAPEarray(const char* filename, int seqlength, double shapeM, double shapeB){
 
 	ifstream infile(filename);
 	SHAPEarray = (double*)malloc(sizeof(double)*(seqlength+1));	
@@ -59,7 +59,7 @@ void readSHAPEarray(const char* filename, int seqlength){
 		if(sscanf(line.c_str(), "%d %lf", &position, &SHAPEnumber)==2){
 			if(position <= seqlength){
 				SHAPEarray[position] = SHAPEnumber;
-				SHAPEenergies[position] = calcShapeEnergy(SHAPEnumber);
+				SHAPEenergies[position] = calcShapeEnergy(SHAPEnumber, shapeM, shapeB);
 			}
 			else{
 				printf("Invalid SHAPE position indicator (ignoring line): %s\n", line.c_str()); 
@@ -80,7 +80,7 @@ int getShapeEnergy(int position){
 	}
 }
 
-int calcShapeEnergy(double shapeNumber){
+int calcShapeEnergy(double shapeNumber, double shapeM, double shapeB){
 //ZS: This function returns the free energy contribution as an integer. 
 	if(shapeNumber<(double)0){
 		return 0;
