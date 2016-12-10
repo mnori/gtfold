@@ -121,7 +121,7 @@ static void print_usage() {
 	printf("   --useSHAPE FILE      Use SHAPE constraints from FILE.\n");
 	printf("   --shapeM FLOAT   Slope (m) parameter for the pseudo free energy equation.\n");
     printf("   --shapeB FLOAT   Intercept (b) parameter for the pseudo free energy equation.\n");
-    printf("                    Default m and b values are 2.6 and -0.8 respectively .\n");
+    printf("                    Default m and b values are 2.6 and -0.8 respectively.\n");
 	printf("   -v, --verbose	Run in verbose mode (includes partition function table printing.)\n");
 	printf("   -w, --workdir DIR    Path of directory where output files will be written.\n");
     

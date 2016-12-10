@@ -503,7 +503,7 @@ static void print_usage() {
     printf("   --useSHAPE FILE  Use SHAPE constraints from FILE.\n");
     printf("   --shapeM FLOAT   Slope (m) parameter for the pseudo free energy equation.\n");
     printf("   --shapeB FLOAT   Intercept (b) parameter for the pseudo free energy equation.\n");
-    printf("                    Default m and b values are 2.6 and -0.8 respectively .\n");
+    printf("                    Default m and b values are 2.6 and -0.8 respectively.\n");
 
     printf("\nConstraint syntax:\n");
     printf("\tP i j k  # prohibit (i,j)(i+1,j-1),.......,(i+k-1,j-k+1) pairs.\n");
